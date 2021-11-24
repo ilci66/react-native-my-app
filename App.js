@@ -22,13 +22,14 @@
 
 // the drawer is throwing a bundle error, new to native, gonna figure out
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>this is the home screen</Text>
       <Button
         onPress={() => navigation.navigate('Notifications')}
         title="Go to notifications"
@@ -57,3 +58,33 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import Home from './screens/home';
+// import Details from './screens/details';
+
+
+// const Stack = createNativeStackNavigator();
+
+// const MyStack = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//           name="Home"
+//           component={Home}
+//           options={{ title: 'Welcome' }}
+//         />
+//         <Stack.Screen 
+//           name="Details" 
+//           component={Details} 
+//           options={{ title: 'A Detailed Look' }}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// export default MyStack;
