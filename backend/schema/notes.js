@@ -1,6 +1,4 @@
-import {
-  gql
-} from 'apollo-server-express';
+import { gql } from 'apollo-server-express';
 
 // don't forget the "!" means non-nullable
 export default gql `
