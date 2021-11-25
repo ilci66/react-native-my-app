@@ -2,8 +2,6 @@ import { gql } from "apollo-server-express";
     
 import noteSchema from "./notes";
 
-// leaving empty for now
-
 const linkSchema = gql`
   type Query {
     _: Boolean
@@ -17,3 +15,5 @@ const linkSchema = gql`
     _: Boolean
   }
 `;
+
+export default [linkSchema, noteSchema];
