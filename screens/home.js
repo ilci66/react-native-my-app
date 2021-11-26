@@ -5,8 +5,10 @@ const Home = ({ navigation }) => {
 
   const getReq = () => {
     console.log("sending get request")
-    // it's probably failing because of the ssl 
-    fetch('http://localhost:3001/', )
+    console.log("testing env ==>", process.env.FRONT_END_URL);
+    // it's probably failing because of the ssl, had to use the local ip instead of the localhost
+    fetch('http://192.168.1.151:3001')
+    // fetch('http://localhost:3001')
     // fetch('https://jsonplaceholder.typicode.com/posts',)
       .then(response => {
         // console.log("response",response)
