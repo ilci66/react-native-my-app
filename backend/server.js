@@ -46,13 +46,14 @@ const port = process.env.PORT;
 // create a routes folder for these later maybe, cluttering here is not athe best way to do it
 
 app.get('/', (req, res) => {
- getMerchants()
-  .then(response => {
-    res.status(200).send(response);
-  })
-  .catch(error => {
-    res.status(500).send(error);
-  })
+  console.log("a request's been made")
+  getMerchants()
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+    })
 });
 
 app.post('/merchants', (req, res) => {
