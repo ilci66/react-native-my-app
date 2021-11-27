@@ -1,8 +1,8 @@
 // now the environment variables work properly
 import dotenv from 'dotenv';
 dotenv.config();
-
 import toPool from 'pg';
+
 let Pool = toPool.Pool;
 
 const pool = new Pool({
