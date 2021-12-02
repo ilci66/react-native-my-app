@@ -1,13 +1,17 @@
 import cors from 'cors';
 import express from 'express';
+import mountRoutes from './routes/index.js';
 import dotenv from 'dotenv';
 dotenv.config();
+// const routes = require('./routes/index.js')
+
 
 // import {
 //     ApolloServer
 // } from 'apollo-server-express';
 
 const app = express();
+mountRoutes(app);
 
 app.use(cors({
   // origin: "http://localhost:3000",

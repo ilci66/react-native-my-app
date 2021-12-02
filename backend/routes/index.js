@@ -1,11 +1,7 @@
-// Example usage
+// const users = require('./user')
+import drawings from './drawings.js';
 
-// const db = require('../db')
-// app.get('/:id', (req, res, next) => {
-//   db.query('SELECT * FROM users WHERE id = $1', [req.params.id], (err, result) => {
-//     if (err) {
-//       return next(err)
-//     }
-//     res.send(result.rows[0])
-//   })
-// })
+export default  app => {
+  // app.use('/users', users)
+  app.use('/drawings', drawings)
+}
