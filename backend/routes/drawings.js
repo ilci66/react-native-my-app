@@ -19,35 +19,16 @@ const router = express.Router();
 
 
 router.get('/', async (req, res, next) => {
-  // I know this is not even close to ideal but just starting
   console.log("a req came")
-  // console.log(pool)
 
-  // I could use te pool.query method now , after my break i will try those out
-  // pool.connect((err, client, release) => {
-  //   if (err) {
-  //     return console.error('Error acquiring client', err.stack)
-  //   }
-  //   client.query('SELECT * FROM mock_drawing', (err, result) => {
-  //     release()
-  //     if (err) {
-  //       res.send("no!");
-  //       return console.error('Error executing query', err.stack);
-
-  //     }
-  //     console.log(result.rows)
-  //     res.send("yes")
-  //   })
-  // })
-
-
-  db.query('SELECT * FROM mock_drawing', [], (err, result) => {
+  // maybe later get the page number from incoming request in order to limit the items to send
+  db.query('SELECT mock_drawing.info, mock_object.type, drawing_object_relation.object_uid FROM drawing_object_relation INNER JOIN mock_drawing ON mock_drawing.drawing_uid = drawing_object_relation.drawing_uid INNER JOIN mock_object ON drawing_object_relation.object_uid = mock_object.object_uid', [], (err, result) => {
     if (err) {
       console.log("error in get all => ",err)
       res.send("no")
       return next(err)
     }
-    console.log("the result in get all ==> ", result)
+    console.log("the result in get all ==> ", result.rows)
     res.send("yes")
   })
 })
