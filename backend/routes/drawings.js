@@ -22,6 +22,8 @@ router.get('/', async (req, res, next) => {
   // I know this is not even close to ideal but just starting
   console.log("a req came")
   // console.log(pool)
+
+  // I could use te pool.query method now , after my break i will try those out
   pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack)
