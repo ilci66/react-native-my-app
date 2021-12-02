@@ -13,6 +13,9 @@ const pool = new Pool({
   port: process.env.POSTGRESQL_PORT,
 });
 
+// might use the methods i exported below in the future but for now i wanna try working like this 
+export default pool;
+
 // using this caused couple of errors, or maybe i couldn't figure out how yet, gonna export pool instead and try to work like that first
 // export default {
 //   query: (text, params, callback) => {

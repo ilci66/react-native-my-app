@@ -1,4 +1,6 @@
-import db from '../db/index.js';
+// import db from '../db/index.js';
+// using pool directly for now 
+import pool from '../db/index.js';
 import express from 'express';
 const router = express.Router();
 // Example usage
@@ -19,9 +21,24 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   // I know this is not even close to ideal but just starting
   console.log("a req came")
-  console.log(db.query())
-  const client = await db.getClient();
-  
+  // console.log(pool)
+  pool.connect((err, client, release) => {
+    if (err) {
+      return console.error('Error acquiring client', err.stack)
+    }
+    client.query('SELECT * FROM mock_drawing', (err, result) => {
+      release()
+      if (err) {
+        res.send("no!");
+        return console.error('Error executing query', err.stack);
+
+      }
+      console.log(result.rows)
+      res.send("yes")
+    })
+  })
+
+
   // db.query('SELECT * FROM mock_drawing', ["stuff"], (err, result) => {
   //   if (err) {
   //     console.log("error in get all => ",err)
