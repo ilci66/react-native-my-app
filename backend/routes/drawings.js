@@ -1,6 +1,6 @@
-// import db from '../db/index.js';
+import db from '../db/index.js';
 // using pool directly for now 
-import pool from '../db/index.js';
+// import pool from '../db/index.js';
 import express from 'express';
 const router = express.Router();
 // Example usage
@@ -24,31 +24,32 @@ router.get('/', async (req, res, next) => {
   // console.log(pool)
 
   // I could use te pool.query method now , after my break i will try those out
-  pool.connect((err, client, release) => {
-    if (err) {
-      return console.error('Error acquiring client', err.stack)
-    }
-    client.query('SELECT * FROM mock_drawing', (err, result) => {
-      release()
-      if (err) {
-        res.send("no!");
-        return console.error('Error executing query', err.stack);
-
-      }
-      console.log(result.rows)
-      res.send("yes")
-    })
-  })
-
-
-  // db.query('SELECT * FROM mock_drawing', ["stuff"], (err, result) => {
+  // pool.connect((err, client, release) => {
   //   if (err) {
-  //     console.log("error in get all => ",err)
-  //     return next(err)
+  //     return console.error('Error acquiring client', err.stack)
   //   }
-  //   console.log("the result in get all ==> ", result)
-  //   res.send()
+  //   client.query('SELECT * FROM mock_drawing', (err, result) => {
+  //     release()
+  //     if (err) {
+  //       res.send("no!");
+  //       return console.error('Error executing query', err.stack);
+
+  //     }
+  //     console.log(result.rows)
+  //     res.send("yes")
+  //   })
   // })
+
+
+  db.query('SELECT * FROM mock_drawing', [], (err, result) => {
+    if (err) {
+      console.log("error in get all => ",err)
+      res.send("no")
+      return next(err)
+    }
+    console.log("the result in get all ==> ", result)
+    res.send("yes")
+  })
 })
 
 // router.post('/')
