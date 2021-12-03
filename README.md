@@ -8,3 +8,5 @@
 * now i understand postgresql and i'm able to make database calls from my backend, but apparently there are safer and less expensive ways to do queries on apis, gonna learn those now
 ## Now I have a an idea about the workings of node with PostgreSQL
 * Next step will be getting rid of the dummy data and updating the database with my drawings
+* Dropping the idea of including sequalize in my backend instead of pg, gonna implement graphql now
+* Took lots of notes on sql and graphql...
