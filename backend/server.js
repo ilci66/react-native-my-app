@@ -29,6 +29,7 @@ app.use(express.json());
 //   next();
 // });
 
+// ==== >> GONNA START IMPLEMENTING THIS
 // const server = new ApolloServer({});
 
 // server.applyMiddleware({

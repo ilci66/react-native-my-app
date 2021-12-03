@@ -22,13 +22,16 @@ router.get('/', async (req, res, next) => {
   console.log("a req came")
 
   // maybe later get the page number from incoming request in order to limit the items to send
-  db.query('SELECT mock_drawing.info, mock_object.type, drawing_object_relation.object_uid FROM drawing_object_relation INNER JOIN mock_drawing ON mock_drawing.drawing_uid = drawing_object_relation.drawing_uid INNER JOIN mock_object ON drawing_object_relation.object_uid = mock_object.object_uid', [], (err, result) => {
+  db.query('SELECT info, ARRAY_AGG(type) type FROM drawing_object_relation INNER JOIN mock_drawing USING(drawing_uid) INNER JOIN mock_object USING(object_uid) GROUP BY info;', [], (err, result) => {
     if (err) {
       console.log("error in get all => ",err)
       res.send("no")
       return next(err)
     }
     console.log("the result in get all ==> ", result.rows)
+    let resultArray = [];
+    result.rows.forEach(drawing => {
+    })
     res.send("yes")
   })
 })
