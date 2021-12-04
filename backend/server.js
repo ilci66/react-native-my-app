@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import mountRoutes from './routes/index.js';
 import dotenv from 'dotenv';
+import graphqlHTTP from 'express-graphql';
 dotenv.config();
 // const routes = require('./routes/index.js')
 
