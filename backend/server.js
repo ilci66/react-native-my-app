@@ -1,8 +1,11 @@
 import cors from 'cors';
 import express from 'express';
-import mountRoutes from './routes/index.js';
+// import mountRoutes from './routes/index.js';
 import dotenv from 'dotenv';
-import graphqlHTTP from 'express-graphql';
+// import graphqlHTTP from 'express-graphql';
+import schema from './schema/schema.js'
+import expressGraphql from 'express-graphql';
+const { graphqlHTTP } = expressGraphql;
 dotenv.config();
 // const routes = require('./routes/index.js')
 
@@ -12,7 +15,7 @@ dotenv.config();
 // } from 'apollo-server-express';
 
 const app = express();
-mountRoutes(app);
+// mountRoutes(app);
 
 app.use(cors({
   // origin: "http://localhost:3000",
@@ -21,6 +24,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
 
 // well I had cors
 // app.use(function (req, res, next) {
@@ -43,6 +47,11 @@ app.use(express.json());
 // }, () => {
 //     console.log('Apollo Server on http://localhost:8000/graphql');
 // });
+
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}))
 
 const port = process.env.PORT;
 
