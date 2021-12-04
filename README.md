@@ -11,3 +11,7 @@
 * Dropping the idea of including sequalize in my backend instead of pg, gonna implement graphql now
 * Took lots of notes on sql and graphql...
 * Started the raphql part of the backend finally
+* I need to figure out what i wanna be able to do with the app, for now i now i wanna be able to see all my drawings and the objects in those drawings as tags, i wanna be able to filter the drawings by the objects,
+* I don't yet know what i wanna do by getting individual objects but we will see 
+## Cancelled the routes in order to use graphql for now
+* Getting couple of errors, gonna fix 'em later
