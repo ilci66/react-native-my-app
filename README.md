@@ -10,3 +10,4 @@
 * Next step will be getting rid of the dummy data and updating the database with my drawings
 * Dropping the idea of including sequalize in my backend instead of pg, gonna implement graphql now
 * Took lots of notes on sql and graphql...
+* Started the raphql part of the backend finally
