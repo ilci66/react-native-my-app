@@ -6,9 +6,9 @@ import { FRONT_END_URL } from "@env" ;
 const Home = ({ navigation }) => {
   const getReq = () => {
     console.log("sending get request")
-    console.log("testing env ==>", process.env.FRONT_END_URL, FRONT_END_URL);
+    console.log("testing env ==>", process.env.FRONT_END_URL, FRONT_END_URL, `${FRONT_END_URL}:3001`);
     // it's probably failing because of the ssl, had to use the local ip instead of the localhost
-    fetch('http://192.168.1.151:3001')
+    fetch(`${FRONT_END_URL}:3001`)
     // fetch('http://localhost:3001')
     // fetch('https://jsonplaceholder.typicode.com/posts',)
       .then(response => {
