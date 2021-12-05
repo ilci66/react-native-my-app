@@ -1,3 +1,4 @@
+import db from '../db/index.js';
 import graphql from "graphql";
 const {
   GraphQLObjectType,
@@ -8,7 +9,7 @@ const {
   GraphQLList,
   GraphQLNonNull
 } = graphql;
-import db from '../db/index.js';
+
 
 
 // copied from data sql files
@@ -78,8 +79,9 @@ const RootQuery = new GraphQLObjectType({
       type: DrawingType,
       args: { drawing_uid: { type: GraphQLID } },
       resolve(parent, args){
-        return db.query('SELECT ARRAY_AGG(uri) uri, ARRAY_AGG(info) info,ARRAY_AGG(type) type FROM drawing_object_relation INNER JOIN mock_drawing USING(drawing_uid) INNER JOIN mock_object USING(object_uid) WHERE drawing_uid = $1', [args.drawing_uid], (err, result) => {
+        return db.query('SELECT uri, info, ARRAY_AGG(type) type FROM drawing_object_relation INNER JOIN mock_drawing USING(drawing_uid) INNER JOIN mock_object USING(object_uid) WHERE drawing_uid = $1 GROUP BY(info, uri)', [args.drawing_uid], (err, result) => {
           if(err) console.log(err);
+          console.log("result.rows ==> ",result.rows)
           return result.rows;
         })
       }
@@ -104,7 +106,7 @@ const RootQuery = new GraphQLObjectType({
         // return all the drawings, with all their objects
         return db.query('SELECT drawing_uid, uri, info, ARRAY_AGG(type) type, ARRAY_AGG(object_uid) object_uid FROM drawing_object_relation INNER JOIN mock_drawing USING(drawing_uid) INNER JOIN mock_object USING(object_uid) GROUP BY info, uri, drawing_uid', [], (err, result) => {
           if(err) console.log(err);
-          console.log(result.rows)
+          console.log("result.rows ==> ",result.rows)
           return result.rows;
         })
       }
