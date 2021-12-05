@@ -20,7 +20,7 @@ import db from '../db/index.js';
 // );
 const DrawingType = new GraphQLObjectType({
   name: 'Drawing',
-  fileds: () => ({
+  fields: () => ({
     drawing_uid: {type:GraphQLID},
     info: {type:GraphQLString},
     uri: {type:GraphQLString},
