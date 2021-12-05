@@ -15,3 +15,5 @@
 * I don't yet know what i wanna do by getting individual objects but we will see 
 ## Cancelled the routes in order to use graphql for now
 * Getting couple of errors, gonna fix 'em later
+* graphiql shows no data but console.logs show that I'm receiveing the data from the database
+* Gonna jump into the front end to see if it is actually working
