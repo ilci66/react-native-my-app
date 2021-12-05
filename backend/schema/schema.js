@@ -73,6 +73,7 @@ const ObjectType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
+    // for single items
     drawing: {
       type: DrawingType,
       args: { drawing_uid: { type: GraphQLID } },
@@ -83,33 +84,38 @@ const RootQuery = new GraphQLObjectType({
         })
       }
     },
-    // don't know what to do with it yet but sure, why not have it 
+    // for single items 
     object: {
       type: ObjectType,
       args: { object_uid: { type: GraphQLID } },
       resolve(parent, args){
         return db.query('SELECT uri,info, ARRAY_AGG(type) type from mock_object JOIN drawing_object_relation USING(object_uid) JOIN mock_drawing USING(drawing_uid) WHERE object_uid = $1', [args.object_uid], (err, result) => {
           if(err) console.log(err);
+          console.log(result.rows)
           return result.rows;
         })
       
       }
     },
+    // for multiple items
     drawings: {
       type: new GraphQLList(DrawingType),
       resolve(parents, args){
         // return all the drawings, with all their objects
         return db.query('SELECT drawing_uid, uri, info, ARRAY_AGG(type) type, ARRAY_AGG(object_uid) object_uid FROM drawing_object_relation INNER JOIN mock_drawing USING(drawing_uid) INNER JOIN mock_object USING(object_uid) GROUP BY info, uri, drawing_uid', [], (err, result) => {
           if(err) console.log(err);
+          console.log(result.rows)
           return result.rows;
         })
       }
     },
+    // for multiple items
     objects: {
       type: new GraphQLList(ObjectType),
       resolve(parents, args){
         return db.query('SELECT * FROM mock_object', [], (err, result) => {
           if(err) console.log(err);
+          console.log(result.rows)
           return result.rows;
         })
       }
