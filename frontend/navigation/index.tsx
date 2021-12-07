@@ -27,9 +27,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      // adding this to try the dark theme
+      // adding this to try the dark theme, as my phone doesn't have to otion to use the dark mode I got confused for a while
       // theme={DarkTheme}
-      >
+    >
       <RootNavigator />
     </NavigationContainer>
   );

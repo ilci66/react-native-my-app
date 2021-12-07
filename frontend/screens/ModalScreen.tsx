@@ -9,6 +9,7 @@ export default function ModalScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Modal</Text>
+      <Text>This modal will have info on the purpose of the app and maybe my contact info too</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/ModalScreen.tsx" />
 

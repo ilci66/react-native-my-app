@@ -20,4 +20,4 @@
 * Still getting the "However, this package itself specifies a `main` module field that could not be resolved" error
 * if i start the react native part of the project with typescript, I don't see the error so i'm thinking I will use that one
 * Still trying to understand all the parts of this basic app, doing lots of reading (tried "userInterfaceStyle": "dark" in app.json, looks alright)
-  
+* Throwing the same error as before, gonna have to look into it further if I wanna use graphql for this one 
