@@ -19,3 +19,5 @@
 * Gonna jump into the front end to see if it is actually working
 * Still getting the "However, this package itself specifies a `main` module field that could not be resolved" error
 * if i start the react native part of the project with typescript, I don't see the error so i'm thinking I will use that one
+* Still trying to understand all the parts of this basic app, doing lots of reading (tried "userInterfaceStyle": "dark" in app.json, looks alright)
+  

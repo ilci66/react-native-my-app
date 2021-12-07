@@ -12,6 +12,14 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
+// Example usage in the typescript docs, for the Profile route with a userId param, undefined used is for no params
+
+// type RootStackParamList = {
+//   Profile: { userId: string };
+// };
+
+// later will be used like this
+// const RootStack = createStackNavigator<RootStackParamList>();
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
