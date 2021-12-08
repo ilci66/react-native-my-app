@@ -13,10 +13,10 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 
-// const client = new ApolloClient({
-//   uri: '192.168.1.151:3001/graphql',
-//   cache: new InMemoryCache()
-// });
+const client = new ApolloClient({
+  uri: '192.168.1.151:3001/graphql',
+  cache: new InMemoryCache()
+});
 
 
 export default function App() {
@@ -28,10 +28,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        {/* <ApolloProvider client={client}> */}
+        <ApolloProvider client={client}>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
-        {/* </ApolloProvider> */}
+        </ApolloProvider>
       </SafeAreaProvider>
     );
   }
